@@ -1,0 +1,92 @@
+{
+  "name": "golf-kds-kitchen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/electron.js",
+  "scripts": {
+    "start": "electron .",
+    "react:start": "react-scripts start",
+    "react:build": "react-scripts build",
+    "build": "npm run react:build && npm run deploy:win64",
+    "deploy:osx": "electron-builder --mac",
+    "deploy:win": "npm run deploy:win32 && npm run deploy:win64",
+    "deploy:win32": "electron-builder --win nsis:ia32",
+    "deploy:win64": "electron-builder --win nsis:x64",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tklee137/eletronTest.git"
+  },
+  "build": {
+    "productName": "Golf KDS Kitchen",
+    "appId": "golf.kds.kitchen",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "asar": true,
+    "mac": {
+      "target": [
+        "default"
+      ]
+    },
+    "dmg": {
+      "title": "Golf KDS Kitchen"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "language": 1042,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "shortcutName": "Golf KDS Kitchen"
+    },
+    "directories": {
+      "output": "./dist/",
+      "app": "."
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.9",
+    "axios": "^1.1.0",
+    "electron": "^21.2.0",
+    "electron-builder": "^23.6.0",
+    "electron-log": "^4.4.8",
+    "electron-updater": "^5.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.2",
+    "react-scripts": "5.0.1",
+    "socket.io-client": "^4.5.3"
+  },
+  "homepage": "./",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
